@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="sk">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Komarena.sk PC Guard</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="guard-shell">
+      <aside class="side-panel" aria-label="Komarena.sk PC Guard">
+        <div class="brand-block">
+          <div class="brand-mark">K</div>
+          <div>
+            <p class="eyebrow">Komarena.sk</p>
+            <h1>PC Guard</h1>
+          </div>
+        </div>
+
+        <canvas id="radarCanvas" width="320" height="220" aria-label="Stav systemu"></canvas>
+
+        <div class="side-status">
+          <span id="agentState">Nacitavam</span>
+          <strong id="scoreMini">--</strong>
+        </div>
+
+        <nav class="module-nav" aria-label="Moduly">
+          <a href="#security">Bezpecnost</a>
+          <a href="#performance">Vykon</a>
+          <a href="#hardware">Hardware</a>
+          <a href="#software">Software</a>
+          <a href="#tasks">Backlog</a>
+        </nav>
+      </aside>
+
+      <section class="dashboard">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Local security control center</p>
+            <h2>Komarena.sk PC Guard</h2>
+          </div>
+          <div class="toolbar">
+            <button class="secondary-button" type="button" id="refreshButton" title="Rychly stav PC">Rychly scan</button>
+            <button class="primary-button" type="button" id="deepScanButton" title="Hlbsi audit softveru">Deep scan</button>
+          </div>
+        </header>
+
+        <div class="status-line" id="statusLine">Cakam na lokalny audit.</div>
+
+        <section class="score-grid" aria-label="Suhrovy stav">
+          <article class="score-card">
+            <p class="eyebrow">Health score</p>
+            <strong id="scoreValue">--</strong>
+            <span id="scoreLevel">offline</span>
+          </article>
+          <article class="metric-card">
+            <p>CPU</p>
+            <strong id="cpuValue">--</strong>
+            <span id="cpuName">--</span>
+          </article>
+          <article class="metric-card">
+            <p>RAM</p>
+            <strong id="memoryValue">--</strong>
+            <span id="memoryDetail">--</span>
+          </article>
+          <article class="metric-card">
+            <p>Zariadenia</p>
+            <strong id="deviceValue">--</strong>
+            <span>pripojene</span>
+          </article>
+        </section>
+
+        <section class="module-grid">
+          <article class="module-card wide" id="security">
+            <header>
+              <div>
+                <p class="eyebrow">Antivirus layer</p>
+                <h3>Bezpecnost</h3>
+              </div>
+              <span class="module-badge" id="securityBadge">--</span>
+            </header>
+            <div class="security-grid" id="securityGrid"></div>
+            <div class="finding-list" id="findingList"></div>
+          </article>
+
+          <article class="module-card" id="performance">
+            <header>
+              <div>
+                <p class="eyebrow">Performance</p>
+                <h3>Vykon</h3>
+              </div>
+            </header>
+            <div class="compact-list" id="processList"></div>
+          </article>
+
+          <article class="module-card" id="hardware">
+            <header>
+              <div>
+                <p class="eyebrow">Thermals + storage</p>
+                <h3>Hardware</h3>
+              </div>
+            </header>
+            <div class="compact-list" id="thermalList"></div>
+            <div class="compact-list" id="diskList"></div>
+          </article>
+
+          <article class="module-card wide">
+            <header>
+              <div>
+                <p class="eyebrow">Connected devices</p>
+                <h3>Zariadenia</h3>
+              </div>
+            </header>
+            <div class="device-table" id="deviceTable"></div>
+          </article>
+
+          <article class="module-card" id="software">
+            <header>
+              <div>
+                <p class="eyebrow">Startup + apps</p>
+                <h3>Software</h3>
+              </div>
+            </header>
+            <div class="compact-list" id="startupList"></div>
+          </article>
+
+          <article class="module-card">
+            <header>
+              <div>
+                <p class="eyebrow">Merged agents</p>
+                <h3>Integracie</h3>
+              </div>
+            </header>
+            <div class="compact-list" id="integrationList"></div>
+          </article>
+
+          <article class="module-card wide" id="tasks">
+            <header>
+              <div>
+                <p class="eyebrow">Product backlog</p>
+                <h3>Ulohy</h3>
+              </div>
+            </header>
+            <form class="task-form" id="taskForm">
+              <input id="taskTitle" name="title" placeholder="Nova uloha pre PC Guard" maxlength="160" />
+              <select id="taskArea" name="area">
+                <option value="security">Bezpecnost</option>
+                <option value="hardware">Hardware</option>
+                <option value="software">Software</option>
+                <option value="automation">Automatizacia</option>
+                <option value="brand">Brand</option>
+                <option value="core">Core</option>
+              </select>
+              <select id="taskPriority" name="priority">
+                <option value="high">High</option>
+                <option value="critical">Critical</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
+              </select>
+              <button class="primary-button" type="submit">Pridat</button>
+            </form>
+            <div class="task-list" id="taskList"></div>
+          </article>
+        </section>
+      </section>
+    </main>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>
