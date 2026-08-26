@@ -1,0 +1,11 @@
+{
+  "name": "komarena-pc-guard",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Lokalny Komarena.sk PC Guard pre bezpecnost, vykon, hardware, software a backlog uloh.",
+  "type": "module",
+  "scripts": {
+    "check": "node --check server.js",
+    "start": "node server.js"
+  }
+}
